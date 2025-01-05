@@ -1,0 +1,13 @@
+.category__name__box {
+  margin: 120px 0 2.25rem 0;
+  text-align: center;
+}
+.category__name__box h3 {
+  font-size: 1.75rem;
+  margin-bottom: 1.5rem;
+}
+.category__name__box hr {
+  width: 24%;
+  margin: 0 auto;
+  background: #e0e5eb;
+}

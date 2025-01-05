@@ -9,6 +9,7 @@
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px var(--colorBox1P2);
   border-bottom: 1px solid var(--colorBorder2);
   transition: 0.3s;
+  z-index: 999;
 }
 
 /* three line  */
@@ -31,6 +32,7 @@
 /* categary */
 .nav {
   padding: 8px 1rem;
+  text-align: center;
 }
 .categary {
   padding: 0.5 1rem;
@@ -40,6 +42,56 @@
   color: var(--colorTitle);
   font-weight: 800;
   transition: 0.2s;
+}
+
+/* ----------more---------- */
+.more {
+  padding: 2rem 1rem;
+  margin: 0.5rem;
+  font-size: 1rem;
+  text-decoration: none;
+  color: var(--colorTitle);
+  font-weight: 800;
+  transition: 0.2s;
+}
+.more:hover {
+  color: var(--colorAccent);
+}
+.more:hover .menu {
+  display: block;
+  background-color: var(--colorAccent);
+  color: var(--colorTitle);
+}
+
+.menu__btn {
+  position: relative;
+  left: -3rem;
+}
+.down__arrow {
+  position: absolute;
+  top: 1.55rem;
+}
+.menu {
+  display: none;
+  width: 10rem;
+  height: auto;
+  padding: 1rem 0;
+  border-radius: 0.25rem;
+  list-style: none;
+  color: var(--colorTitle);
+  background-color: var(--colorAccent);
+  position: absolute;
+  top: 4rem;
+  left: -2rem;
+}
+.menu .li {
+  padding: 0.3rem 1rem;
+  display: block;
+  color: var(--colorTitle);
+  text-decoration: none;
+}
+.menu .li:hover {
+  background-color: var(--colorRootBG);
 }
 
 /* search */
@@ -58,8 +110,8 @@
   top: 2px;
   left: -1.4rem;
 }
-/* categary & search hover */
 
+/* categary & search hover */
 .categary:hover,
 .search__box:hover {
   color: var(--colorAccent);
@@ -112,6 +164,7 @@
     position: fixed;
   }
   .nav {
+    width: 50rem;
     margin: 8px 1.5rem;
   }
 }
@@ -123,6 +176,7 @@
     justify-content: center;
   }
   .nav {
+    width: 50rem;
     margin: 8px 5rem;
   }
 }

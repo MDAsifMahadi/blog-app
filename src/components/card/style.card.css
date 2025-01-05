@@ -1,0 +1,104 @@
+.card {
+  padding: 1.5rem;
+  padding-bottom: 3rem;
+  margin: 1rem;
+  border-radius: 1rem;
+  background-color: var(--colorBGCard);
+  border: var(--BoxBorder);
+  transition: 0.15s;
+  cursor: pointer;
+  position: relative;
+}
+.title {
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  line-height: 1.5rem;
+  color: var(--colorTitle);
+}
+
+.writer__name {
+  margin-bottom: 10px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-align: start;
+  line-height: 1.8rem;
+  color: var(--colorText);
+  position: relative;
+  left: 1.2rem;
+  transition: 0.2s;
+}
+.feather {
+  position: absolute;
+  top: 0.4rem;
+  left: -1.2rem;
+}
+
+.date {
+  font-weight: 500;
+  font-size: 0.8rem;
+  position: absolute;
+  left: 2.5rem;
+  bottom: 1rem;
+}
+.calendar {
+  position: absolute;
+  left: -1.2rem;
+}
+
+.card__image {
+  width: 100%;
+  margin: 0.5rem 0 1rem 0;
+}
+
+.writer__name:hover {
+  color: var(--colorAccent);
+}
+.card:hover {
+  background-color: var(--colorHoverBGCard);
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .card {
+    width: 350px;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .card {
+    width: 290px;
+  }
+  .card__image {
+    transform: scale(1.212);
+  }
+}
+
+/* Medium devices (landscape tablets, 992px and down) */
+@media only screen and (max-width: 992px) {
+  .card {
+    width: 330px;
+  }
+  .card__image {
+    transform: scale(1.16);
+  }
+}
+@media only screen and (max-width: 765px) {
+  .card {
+    width: 420px;
+  }
+  .card__image {
+    transform: scale(1.13);
+  }
+}
+@media only screen and (max-width: 575px) {
+  .card {
+    width: 100%;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+  .card__image {
+    width: 95%;
+    margin: 0 auto 1.5rem auto;
+  }
+}

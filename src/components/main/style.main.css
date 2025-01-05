@@ -1,0 +1,30 @@
+.page {
+  display: grid;
+  justify-content: center;
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .page {
+    grid-template-columns: auto auto auto;
+  }
+}
+
+/* Medium devices (landscape tablets, 992px and down) */
+@media only screen and (max-width: 992px) {
+  .page {
+    grid-template-columns: auto auto;
+  }
+}
+/* Extra small devices (phones, 767px and down) */
+@media only screen and (max-width: 767px) {
+  .page {
+    grid-template-columns: auto;
+  }
+}
+/* Extra small devices (phones, 577px and down) */
+@media only screen and (max-width: 577px) {
+  .page {
+    grid-template-columns: auto;
+  }
+}

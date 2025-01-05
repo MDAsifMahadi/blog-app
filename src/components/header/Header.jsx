@@ -2,25 +2,28 @@ import { useState } from "react";
 
 // my components
 import List from "./Lists/List";
-
 // styles
 import "./style.header.css";
 
 // images & icons
-import { NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import logo from "../../assets/logo.jpg";
 
 // icons
 import { FaSearch } from "react-icons/fa";
 import { LiaBarsSolid } from "react-icons/lia";
+import Menu from "./Lists/Menu";
 
 
-const Header = () => {
+// eslint-disable-next-line react/prop-types
+const Header = ({setSidebarOpen, myCategory}) => {
 
-    const listItem = ["মূলপাতা", "ইসলাম", "উম্মাহ", "বাদ-মতবাদ", "সভ্যতা ও সংঘাত", "সমসাময়িক", "বিক্ষিপ্ত", "প্রকাশিত", "তালিকাসমূহ"]
+    const listItem = Object.keys(myCategory);
 
+    // this state stores is header height 120px or 90px !!
     const [small, setSmall] = useState(false);
 
+    // header height becomes 90 px with this function !!
     window.addEventListener("scroll", () => {
       if(window.scrollY > 99) {
         setSmall(true);
@@ -29,24 +32,34 @@ const Header = () => {
       }
     });
 
+    const location = useLocation().pathname;
+
   return (
     <header className="header" style={small ? {height : "80px"} : {}}>
 
-      <div className="three__line">
+      <div className="three__line" onClick={() => setSidebarOpen(true)}>
           <LiaBarsSolid className="three__line__icon"/>
       </div>
 
-      <NavLink className="header__logo">
+      <Link className="header__logo" to="/">
         <img src={logo} alt="Logo" />
-      </NavLink>
+      </Link>
 
       <nav className="nav">
-        {listItem.map(item => <List key={Math.random()} item={item} />)}
+
+      <List key={Math.random()} item={"মূলপাতা"} routeName={""} index={1}/>
+      
+       {listItem.map((item, index) => <List key={Math.random()} item={myCategory[item]} index={index} routeName={item} />)}
+
+        {listItem.length > 6 && <Menu routeName={listItem} myCategory={myCategory}/>}
+
       </nav>
 
-      <NavLink className="search__box">
-        <FaSearch className="search__icon"/> Search
-      </NavLink>
+     
+        <NavLink to="/search" className="search__box" style={location === "/search" ? {color : "#33af7f"} : {}}>
+          <FaSearch className="search__icon"/> Search
+        </NavLink>
+    
 
     </header>
   )

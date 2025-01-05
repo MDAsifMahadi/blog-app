@@ -40,7 +40,22 @@
   --colorBox1P2: rgba(0, 0, 0, 0.24);
   --appFont: "Noto Sans", "Poppins", Helvetica, sans-serif;
 }
+::selection {
+  background-color: var(--colorAccent);
+  color: var(--light);
+}
+::-webkit-scrollbar {
+  width: 5px;
+}
 
+::-webkit-scrollbar-track {
+  background-color: var(--colorRootBG);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--gray);
+  border-radius: 100vw;
+}
 * {
   margin: 0;
   padding: 0;
@@ -48,6 +63,34 @@
   font-family: "Noto Sans Bengali", sans-serif;
 }
 
-.big {
-  height: 200vh;
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+span {
+  color: var(--colorText);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+nav .active {
+  color: var(--colorAccent);
+}
+.active {
+  color: var(--colorAccent);
 }
