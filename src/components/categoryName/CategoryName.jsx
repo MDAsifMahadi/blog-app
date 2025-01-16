@@ -1,6 +1,6 @@
 import "./style.categoryName.css";
 
-// eslint-disable-next-line react/prop-types
+
 const CategoryName = ({cName}) => {
 
   return (

@@ -2,6 +2,7 @@ import { useState } from "react";
 
 // my components
 import List from "./Lists/List";
+import Menu from "./Lists/Menu";
 // styles
 import "./style.header.css";
 
@@ -12,13 +13,11 @@ import logo from "../../assets/logo.jpg";
 // icons
 import { FaSearch } from "react-icons/fa";
 import { LiaBarsSolid } from "react-icons/lia";
-import Menu from "./Lists/Menu";
 
 
-// eslint-disable-next-line react/prop-types
+
 const Header = ({setSidebarOpen, myCategory}) => {
 
-    const listItem = Object.keys(myCategory);
 
     // this state stores is header height 120px or 90px !!
     const [small, setSmall] = useState(false);
@@ -31,6 +30,10 @@ const Header = ({setSidebarOpen, myCategory}) => {
         setSmall(false);
       }
     });
+
+    const fastCategorys = myCategory.slice(0, 7)
+    const lestCategorys = myCategory.slice(7);
+    
 
     const location = useLocation().pathname;
 
@@ -47,11 +50,21 @@ const Header = ({setSidebarOpen, myCategory}) => {
 
       <nav className="nav">
 
-      <List key={Math.random()} item={"মূলপাতা"} routeName={""} index={1}/>
+      <List key={Math.random()} category={{bangla : "মূলপাতা", english : ""}} index={1}/>
       
-       {listItem.map((item, index) => <List key={Math.random()} item={myCategory[item]} index={index} routeName={item} />)}
-
-        {listItem.length > 6 && <Menu routeName={listItem} myCategory={myCategory}/>}
+      {
+       fastCategorys.map((categary, i) => {
+        return <List 
+          key={Math.random()}
+          myCategory={myCategory}
+          category={categary}
+          i={i}
+        />
+       })
+      }
+      {
+        lestCategorys.length !== 0 ? <Menu lestCategorys={lestCategorys} /> : null 
+      }
 
       </nav>
 

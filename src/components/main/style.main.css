@@ -1,6 +1,7 @@
 .page {
   display: grid;
   justify-content: center;
+  min-height: 65vh;
 }
 
 /* Large devices (laptops/desktops, 992px and up) */

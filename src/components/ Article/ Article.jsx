@@ -1,17 +1,69 @@
-import "./style.Article.css";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import API from "../../utilities/API";
+import Loading from "./../../utilities/loading/Loading";
+import "./style.Article.css"; // css style
 
+// icons
+import { FaFeatherPointed } from "react-icons/fa6";
+import { MdDateRange, MdRemoveRedEye } from "react-icons/md";
+import { TbCategoryPlus } from "react-icons/tb";
 
 const  Article = () => {
+
+  const { id } = useParams();
+  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState({});
+
+  useEffect(() => {
+    API.get(`/onearticle/${id}`)
+      .then(res => {
+        setData(res.data);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }, [id]);
+
+const formatMongoDateToBangla = (mongoDate) => {
+    const date = new Date(mongoDate);
+  
+    // Intl.DateTimeFormat ব্যবহার করে বাংলায় ফরম্যাট করা
+    const formattedDate = new Intl.DateTimeFormat("bn-BD", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    }).format(date);
+  
+    return formattedDate;
+  }
 
 
   return (
     <article className="blog__page">
-      <h2>পাঠক, সাবধান! ভয়ের জগতে প্রবেশ করছ তুমি! পর্ব-১</h2>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum possimus dolorem vel hic explicabo commodi, praesentium aspernatur officia. Ratione culpa eveniet repellendus eos? Atque provident hic illo minus laborum rerum voluptas dignissimos voluptatum consequuntur nostrum dolore ex vel nihil nemo, numquam ipsum totam aliquid beatae at. Adipisci blanditiis ullam est, cum exercitationem a earum culpa nisi incidunt. Excepturi hic recusandae debitis soluta vel rem magnam accusamus quam sed eveniet, officiis ipsa beatae velit corrupti aliquid eos doloremque laborum facilis consequuntur veritatis adipisci accusantium porro dolores quaerat? Ratione pariatur debitis repellat rem ea doloremque perferendis ducimus dicta delectus atque, minima quas?
-      </p>
+     {
+      loading ? <Loading /> :
+      <>
+         <h2 className="h2">{data.title}</h2>
 
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam nemo consequuntur nostrum voluptate recusandae, labore dolorum, iure esse hic quibusdam sit adipisci itaque vel repudiandae repellendus quaerat exercitationem ut id, magni sapiente voluptatem corrupti error? Sequi voluptates minima rerum velit expedita ipsam quae? Quos pariatur maiores fugit iusto earum et id velit nesciunt nemo voluptatem ducimus reiciendis, enim fuga deserunt voluptas voluptatibus debitis quibusdam nihil odio illo. Maiores, aut quam.</p>
+         <h3 className="writer__name article_data"><FaFeatherPointed className="feather"/>  {data.writer}</h3>
+         <h3 className="writer__name article_data"><MdRemoveRedEye className="feather "/>  {data.view} Views</h3>
+         <h3 className="writer__name article_data"><MdDateRange className="feather "/> {formatMongoDateToBangla(data.date)}</h3>
+
+         <div className="category_div">
+          {
+            data.categories.map(catagory => (
+              <span key={Math.random().toString()} className="writer__name article_data article_category">
+                <TbCategoryPlus className="feather "/> {catagory.label}
+              </span>
+            ))
+          }
+         </div>
+
+         <div dangerouslySetInnerHTML={{ __html: data.article }} />
+      </>
+     }
     </article>
   )
 }

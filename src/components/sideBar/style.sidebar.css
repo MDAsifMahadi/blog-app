@@ -9,6 +9,9 @@
   transition: 0.3s;
   overflow-y: auto;
 }
+.sidebar svg {
+  cursor: pointer;
+}
 .sidebar__icon {
   color: aliceblue;
   position: absolute;

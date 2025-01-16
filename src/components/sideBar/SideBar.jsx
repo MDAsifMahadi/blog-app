@@ -6,10 +6,8 @@ import "./style.sidebar.css";
 
 // icons
 
-// eslint-disable-next-line react/prop-types
+
 const SideBar = ({sidebarOpen, setSidebarOpen, myCategory}) => {
-  // routes
-  const routeName = Object.keys(myCategory);
 
   // sidebar close when click on the outside of sidebar = -1
 
@@ -25,11 +23,11 @@ const SideBar = ({sidebarOpen, setSidebarOpen, myCategory}) => {
 
       <div className="sidebar__box" onClick={()=> setSidebarOpen(!sidebarOpen)} >
 
-      <SideBarList key={Math.random()} myCategory={{main :"মূলপাতা"}} routeName={"/"} index={1}/>
+      <SideBarList key={Math.random()} category={{english : "main", bangla : "মূলপাতা"}} />
 
         {
-          routeName.map((routeName) => {
-            return <SideBarList key={Math.random()} routeName={routeName} myCategory={myCategory}/>
+          myCategory.map((category) => {
+            return <SideBarList key={Math.random()} category={category} />
           })
         }
       </div>

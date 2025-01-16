@@ -1,15 +1,28 @@
 .card {
-  padding: 1.5rem;
+  padding: 1rem;
   padding-bottom: 3rem;
-  margin: 1rem;
+  margin: 0.5rem;
   border-radius: 1rem;
   background-color: var(--colorBGCard);
   border: var(--BoxBorder);
   transition: 0.15s;
-  cursor: pointer;
   position: relative;
 }
+.pera img {
+  max-width: 18rem;
+}
+.card__header {
+  height: 4rem;
+}
+.pera {
+  margin: 2rem auto 0 auto;
+  padding: 0.25rem;
+}
+.post {
+  cursor: pointer;
+}
 .title {
+  width: 100%;
   margin-bottom: 20px;
   font-size: 1.2rem;
   line-height: 1.5rem;
@@ -25,6 +38,7 @@
   color: var(--colorText);
   position: relative;
   left: 1.2rem;
+  top: -1rem;
   transition: 0.2s;
 }
 .feather {
@@ -32,7 +46,6 @@
   top: 0.4rem;
   left: -1.2rem;
 }
-
 .date {
   font-weight: 500;
   font-size: 0.8rem;
@@ -45,9 +58,10 @@
   left: -1.2rem;
 }
 
-.card__image {
-  width: 100%;
-  margin: 0.5rem 0 1rem 0;
+.card_btn {
+  position: absolute;
+  right: 1rem;
+  bottom: 10px;
 }
 
 .writer__name:hover {
@@ -57,48 +71,41 @@
   background-color: var(--colorHoverBGCard);
 }
 
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) {
-  .card {
-    width: 350px;
-  }
-}
-
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
   .card {
-    width: 290px;
+    min-width: 250px;
+    max-width: 330px;
   }
-  .card__image {
-    transform: scale(1.212);
+  .pera img {
+    max-width: 18rem;
   }
 }
 
 /* Medium devices (landscape tablets, 992px and down) */
 @media only screen and (max-width: 992px) {
   .card {
-    width: 330px;
+    min-width: 250px;
+    max-width: 340px;
   }
-  .card__image {
-    transform: scale(1.16);
-  }
-}
-@media only screen and (max-width: 765px) {
-  .card {
-    width: 420px;
-  }
-  .card__image {
-    transform: scale(1.13);
+  .pera img {
+    max-width: 18rem;
   }
 }
-@media only screen and (max-width: 575px) {
+/* Extra small devices (phones, 767px and down) */
+@media only screen and (max-width: 767px) {
   .card {
-    width: 100%;
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
+    min-width: 250px;
+    max-width: 400px;
   }
-  .card__image {
+  .pera img {
+    min-width: 100%;
+    max-width: 100%;
+  }
+}
+/* Extra small devices (phones, 577px and down) */
+@media only screen and (max-width: 577px) {
+  .card {
     width: 95%;
-    margin: 0 auto 1.5rem auto;
   }
 }

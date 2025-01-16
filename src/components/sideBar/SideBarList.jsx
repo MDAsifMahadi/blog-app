@@ -1,11 +1,12 @@
 import { NavLink } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
-const SideBarList = ({routeName, myCategory}) => {
-    
+const SideBarList = ({category}) => {
+    const {bangla, english} = category;
   return (
-    <NavLink className="sidebar__link" to={`/${routeName === "/" ? "" : routeName}`}>
-      {myCategory[routeName === "/" ? "main" : routeName]}
+    <NavLink className="sidebar__link" to={`/${english === "main" ? "" : english}`}>
+
+      {bangla}
     </NavLink>
 
     

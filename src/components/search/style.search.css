@@ -1,13 +1,8 @@
 .search__form {
   text-align: center;
-  min-height: 52vh;
+  margin-bottom: 1rem;
 }
 .search__input {
-  /* padding: 0.5rem 1rem;
-  font-size: 1.25rem;
-  line-height: 1.5;
-  border-radius: 0.3rem; */
-
   height: calc(1.5em + 1rem + 2px);
   padding: 0.5rem 1rem;
   font-size: 1.25rem;
@@ -22,4 +17,35 @@
 }
 .search__input:focus {
   outline-color: var(--colorAccent);
+}
+.result {
+  width: 98%;
+  min-height: 50vh;
+  display: grid;
+  justify-content: center;
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .result {
+    grid-template-columns: auto auto auto;
+  }
+}
+
+/* Medium devices (landscape tablets, 992px and down) */
+@media only screen and (max-width: 992px) {
+  .result {
+    grid-template-columns: auto auto;
+  }
+}
+/* Extra small devices (phones, 767px and down) */
+@media only screen and (max-width: 767px) {
+  .result {
+    grid-template-columns: auto;
+  }
+}
+/* Extra small devices (phones, 577px and down) */
+@media only screen and (max-width: 577px) {
+  .result {
+    grid-template-columns: auto;
+  }
 }

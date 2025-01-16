@@ -3,9 +3,8 @@ import { useLocation } from "react-router-dom";
 import API from "../../utilities/API";
 import Card from "../card/Card";
 import Loading from "./../../utilities/loading/Loading";
-import './style.main.css';
 
-const Main = () => {
+const OtherPage = ({ category }) => {
   const location = useLocation();
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
@@ -17,17 +16,15 @@ const Main = () => {
   const fetchData = async (pageNumber) => {
     setIsFetching(true);
     try {
-      const response = await API.get(`/articles?page=${pageNumber}&limit=10`);
-      const newData = response.data;
-      // Filter out duplicate articles
-      const uniqueData = newData.filter(
-        (newArticle) => !data.some((existingArticle) => existingArticle._id === newArticle._id)
+      const response = await API.get(
+        `/articlesbycatigory?page=${pageNumber}&limit=10&category=${category.english}`
       );
+      const newData = response.data;
 
-      if (uniqueData.length === 0) {
+      if (newData.length === 0) {
         setHasMore(false); // No more articles to load
       } else {
-        setData((prevData) => [...prevData, ...uniqueData]);
+        setData((prevData) => [...prevData, ...newData]);
       }
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -37,14 +34,27 @@ const Main = () => {
     }
   };
 
-  // Fetch data whenever page changes
+  // Fetch data whenever category changes
   useEffect(() => {
-    fetchData(page);
+    setData([]); // Clear the current data
+    setPage(1); // Reset page to 1
+    setHasMore(true); // Reset hasMore to true
+    fetchData(1); // Fetch data for the new category
+  }, [category]);
+
+  // Fetch data whenever page changes (pagination)
+  useEffect(() => {
+    if (page > 1) {
+      fetchData(page);
+    }
   }, [page]);
 
   // Handle scroll event to detect when to load more data
   const handleScroll = () => {
-    if (window.innerHeight + document.documentElement.scrollTop + 1 >= document.documentElement.scrollHeight) {
+    if (
+      window.innerHeight + document.documentElement.scrollTop + 1 >=
+      document.documentElement.scrollHeight
+    ) {
       if (hasMore && !isFetching) {
         setPage((prevPage) => prevPage + 1);
       }
@@ -57,7 +67,10 @@ const Main = () => {
   }, [hasMore, isFetching]);
 
   return (
-    <main className='page' style={location.pathname === "/" ? { marginTop: "120px" } : {}}>
+    <main
+      className="page"
+      style={location.pathname === "/" ? { marginTop: "120px" } : {}}
+    >
       {loading ? (
         <Loading />
       ) : (
@@ -81,6 +94,4 @@ const Main = () => {
   );
 };
 
-export default Main;
-
-
+export default OtherPage;

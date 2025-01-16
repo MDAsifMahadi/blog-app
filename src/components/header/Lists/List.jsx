@@ -1,10 +1,14 @@
 import { NavLink } from "react-router-dom";
-
 // eslint-disable-next-line react/prop-types
-const List = ({item, index, routeName}) => {
+const List = ({category, i}) => {
+  const {bangla, english} = category;
+
+  if (i > 6){
+    return null
+  }
   return (
-    <NavLink className="categary" to={`/${routeName}`}>
-      {index < 6 && item}
+    <NavLink className="categary" to={`/${english}`}>
+      {bangla}
     </NavLink>
 
     

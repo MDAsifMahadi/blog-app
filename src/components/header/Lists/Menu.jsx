@@ -1,9 +1,8 @@
 import { Link, NavLink } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
-const Menu = ({routeName, myCategory}) => {
+const Menu = ({lestCategorys}) => {
 
-    
 
   return (
     <Link className="more menu__btn">
@@ -13,7 +12,14 @@ const Menu = ({routeName, myCategory}) => {
 
 
       <ul className="menu">
-        {routeName.map((list, index) => index > 5 ? <NavLink className="li" key={Math.random()} to={`/${list}`}>{myCategory[list]}</NavLink> : null)}
+        {lestCategorys.map((category, i) => {
+          const {bangla, english} = category;
+
+          return <NavLink className="li" 
+                    key={Math.random()} 
+                    to={`/${english}`}> {bangla}
+                  </NavLink>
+        })}
       </ul>
     </Link>
   )
