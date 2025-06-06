@@ -1,12 +1,10 @@
-// router
-import axios from "axios";
 import { useEffect } from "react";
 import Router from "./Router";
-import URL from "./utilities/config";
+import API from "./utilities/API";
 const App = () => {
 
   useEffect(()=> {
-    axios.post(URL+"/api/track")
+    API.post("/api/track")
   }, [])
 
   return <Router />

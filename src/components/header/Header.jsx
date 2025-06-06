@@ -8,7 +8,7 @@ import "./style.header.css";
 
 // images & icons
 import { Link, NavLink, useLocation } from "react-router-dom";
-import logo from "../../assets/logo.jpg";
+import logo from "../../assets/logo.png";
 
 // icons
 import { FaSearch } from "react-icons/fa";

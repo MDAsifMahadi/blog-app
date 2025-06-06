@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 // my components
-import axios from "axios";
+
 import Article from "./components/ Article/ Article";
 import CategoryName from "./components/categoryName/CategoryName";
 import Footer from "./components/footer/Footer";
@@ -12,7 +12,8 @@ import OtherPage from "./components/other/OtherPage";
 import Search from "./components/search/Search";
 import Setting from "./components/settings/Setting";
 import SideBar from "./components/sideBar/SideBar";
-import URL from "./utilities/config";
+import API from "./utilities/API";
+
 // all routes setup
 const Router = () => {
 
@@ -22,7 +23,7 @@ const Router = () => {
   const [categorys, setCategory] = useState([]);
 
   useEffect(() => {
-    axios.get(URL + `/categorie`)
+    API.get(`/categorie`)
       .then(res => {
         setCategory(res.data);
       })

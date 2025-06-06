@@ -59,7 +59,7 @@ const Main = () => {
   return (
     <main className='page' style={location.pathname === "/" ? { marginTop: "120px" } : {}}>
       {loading ? (
-        <Loading />
+       ""
       ) : (
         data.map((data) => {
           const { _id, title, writer, cardData, categories, date } = data;

@@ -105,7 +105,7 @@ const SearchArticles = () => {
       </form>
       <div className="result">
         {loading ? (
-          <Loading />
+          ""
         ) : (
           articles.map((article) => {
             const { _id, title, writer, cardData, categories, date } = article;
