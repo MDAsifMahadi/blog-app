@@ -1,12 +1,9 @@
-
 import "./style.footer.css";
 
 const Footer = () => {
-
-
   return (
     <footer className="footer">
-      <span>&copy; 2024 Asif Mahadi</span>
+      <span>&copy; 2024 Junaid Ur Rahman</span>
     </footer>
   )
 }
