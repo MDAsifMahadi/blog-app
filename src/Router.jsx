@@ -32,14 +32,12 @@ const Router = () => {
       })
   }, [])
 
-  
   return (
     <div>
       <BrowserRouter>
       <Header setSidebarOpen={setSidebarOpen} myCategory={categorys} />
 
       <SideBar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} myCategory={categorys} />
-
         {/* routes */}
         <Routes>
           <Route path="/" element={<><Setting /><Main /></>} />
